@@ -24,7 +24,7 @@ class MailController extends Controller
         } catch (Throwable $error) {
             return response()->json([
                 'status' => false,
-                'log' => $error
+                'log' => $error,
                 'message' => 'Something went wrong, please try again!'
             ]);
         }
