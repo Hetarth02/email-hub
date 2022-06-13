@@ -13,9 +13,9 @@ class MailController extends Controller
     {
         $input = $request->all();
         try {
-            Mail::to($input['email_to'])
-                ->cc($input['email_cc'])
-                ->bcc($input['email_bcc'])
+            Mail::to($input['email_to'] ?? 'hetarthshah9@mailinator.com')
+                ->cc($input['email_cc'] ?? null)
+                ->bcc($input['email_bcc'] ?? null)
                 ->send(new EmailTemplate($input));
             return response()->json([
                 'status' => true,
