@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Throwable;
 use App\Mail\EmailTemplate;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Mail;
 
 class MailController extends Controller
@@ -22,6 +23,7 @@ class MailController extends Controller
                 'message' => 'Email sent Successfully!'
             ]);
         } catch (Throwable $error) {
+            Log::info($error);
             return response()->json([
                 'status' => false,
                 'message' => 'Something went wrong, please try again!'
