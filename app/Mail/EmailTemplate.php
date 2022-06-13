@@ -30,7 +30,7 @@ class EmailTemplate extends Mailable
      */
     public function build()
     {
-        return $this->replyTo($this->data['email_reply_to_email'], $this->data['email_reply_to_email'])
+        return $this->replyTo($this->data['email_reply_to_email'] ?? null, $this->data['email_reply_to_name'] ?? null)
             ->subject($this->data['email_subject'])
             ->view('emails.email-template');
     }
