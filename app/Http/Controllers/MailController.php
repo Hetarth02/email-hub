@@ -13,6 +13,7 @@ class MailController extends Controller
     public function sendMail(Request $request)
     {
         $input = $request->all();
+        return dd($input);
         try {
             Mail::to($input['email_to'])
                 ->cc($input['email_cc'] ?? null)
