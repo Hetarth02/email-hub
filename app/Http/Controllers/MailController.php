@@ -13,7 +13,7 @@ class MailController extends Controller
     public function sendMail(Request $request)
     {
         $input = $request->all();
-        return dd($input);
+        return $input['email_to'];
         try {
             Mail::to($input['email_to'])
                 ->cc($input['email_cc'] ?? null)
@@ -24,7 +24,6 @@ class MailController extends Controller
                 'message' => 'Email sent Successfully!'
             ]);
         } catch (Throwable $error) {
-            Log::info($input);
             Log::info($error);
             return response()->json([
                 'status' => false,
